@@ -1,17 +1,16 @@
-class Ship {
-  constructor(length) {
+export default class Ship {
+  constructor(length, coordinateX, coordinateY) {
     this.length = length
+    this.coordinateX = coordinateX
+    this.coordinateY = coordinateY
     this.hits = 0
-    this.isSunk = false
   }
 
   hit() {
     this.hits += 1
   }
 
-  checkSunkStatus() {
-    if (this.hits === this.length) {
-      this.isSunk = true
-    }
+  isSunk() {
+    return this.hits === this.length
   }
 }
