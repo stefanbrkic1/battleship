@@ -1,9 +1,8 @@
 class Ship {
-  constructor(length, coordinateX, coordinateY) {
+  constructor(length, coordinates) {
     this.length = length
-    this.coordinateX = coordinateX
-    this.coordinateY = coordinateY
     this.hits = 0
+    this.coordinates = coordinates
   }
 
   hit() {
