@@ -1,4 +1,4 @@
-export default class Ship {
+class Ship {
   constructor(length, coordinateX, coordinateY) {
     this.length = length
     this.coordinateX = coordinateX
@@ -14,3 +14,5 @@ export default class Ship {
     return this.hits === this.length
   }
 }
+
+module.exports = Ship
