@@ -45,13 +45,13 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Battleship',
+      title: 'Battleship | The Classic Naval Combat Game',
       filename: 'index.html',
       template: './src/pages/index.ejs',
       chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
-      title: 'Battleship | Game',
+      title: 'Battleship | Gameboard',
       filename: 'battleship.html',
       template: './src/pages/battleship.ejs',
       chunks: ['battleship'],
