@@ -1,0 +1,145 @@
+@font-face {
+  font-family: 'Maschine';
+  src: url(../assets/fonts/MachineStd.otf);
+}
+
+@font-face {
+  font-family: 'MaschineBold';
+  src: url(../assets/fonts/MachineStd-Bold.otf);
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url(../assets/fonts/Helvetica.ttf);
+}
+
+@font-face {
+  font-family: 'HelveticaBold';
+  src: url(../assets/fonts/Helvetica-Bold.ttf);
+}
+
+:root {
+  --primary-color: #2d69eb;
+  --secondary-color: rgb(241, 229, 54);
+
+  --text-color: #fbfbfb;
+  --text-secondary-color: #bfbfd4;
+  --text-tertiary-color: #7f7f98;
+
+  --background-color: #050505;
+  --background-secondary-color: #1c1d27;
+
+  --primary-font-regular: 'Maschine', sans-serif;
+  --primary-font-bold: 'MaschineBold', sans-serif;
+
+  --secondary-font-regular: 'Helvetica', sans-serif;
+  --secondary-font-bold: 'HelveticaBold', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 6.25%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16rem;
+  font-family: var(--secondary-font-regular);
+  color: var(--text-color);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 0px;
+}
+
+.main {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.battleship-text {
+  font-family: var(--primary-font-regular);
+  font-size: 270rem;
+}
+
+.landing-top {
+  color: var(--text-tertiary-color);
+}
+
+.landing-text {
+  font-size: 30rem;
+  letter-spacing: 10px;
+  color: var(--text-tertiary-color);
+}
+
+.play-btn {
+  appearance: none;
+  border: none;
+  outline: none;
+  padding: 14px 80px;
+  font-size: 35px;
+  font-family: 'HelveticaBold', sans-serif;
+  line-height: normal;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  background-color: rgb(223, 189, 0);
+  color: var(--text-color);
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+a:hover {
+  color: var(--text-tertiary-color);
+}
+
+.github-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.github {
+  width: 23rem;
+  height: 23rem;
+  background: url(../assets/img/github.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.github-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
