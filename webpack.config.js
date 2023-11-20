@@ -22,7 +22,20 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    assetModuleFilename: 'assets/[name]-[contenthash][ext]',
+    assetModuleFilename: (pathData) => {
+      const isFont = /\.(woff|woff2|eot|ttf|otf)$/.test(pathData.filename)
+      const isImage = /\.(png|svg|jpg|jpeg|gif)$/.test(pathData.filename)
+
+      if (isFont) {
+        return `assets/font/${pathData.filename}`
+      }
+
+      if (isImage) {
+        return `assets/img/${pathData.filename}`
+      }
+
+      return `assets/${pathData.filename}`
+    },
   },
   optimization: {
     runtimeChunk: 'single',
@@ -40,6 +53,18 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.(mp3)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/audio/', // Specify the output path
+            },
+          },
+        ],
       },
     ],
   },
