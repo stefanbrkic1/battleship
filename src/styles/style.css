@@ -143,3 +143,28 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
+
+/*Media Queries*/
+
+/* Media query for phones */
+@media only screen and (max-width: 767px) {
+  .main {
+    margin-bottom: 50%;
+  }
+  .battleship-text {
+    font-size: 80rem;
+  }
+  .landing-text {
+    font-size: 15rem;
+    letter-spacing: normal;
+    padding-bottom: 3px;
+  }
+  .play-btn {
+    font-size: 25px;
+    padding: 12px 40px;
+  }
+}
+
+/* Media query for tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+}
