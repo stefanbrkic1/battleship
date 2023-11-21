@@ -1,0 +1,134 @@
+@font-face {
+  font-family: 'Maschine';
+  src: url(../assets/fonts/MachineStd.otf);
+}
+
+@font-face {
+  font-family: 'MaschineBold';
+  src: url(../assets/fonts/MachineStd-Bold.otf);
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url(../assets/fonts/Helvetica.ttf);
+}
+
+@font-face {
+  font-family: 'HelveticaBold';
+  src: url(../assets/fonts/Helvetica-Bold.ttf);
+}
+
+:root {
+  --primary-color: #2d69eb;
+  --secondary-color: rgb(241, 229, 54);
+
+  --text-color: #fbfbfb;
+  --text-secondary-color: #bfbfd4;
+  --text-tertiary-color: #7f7f98;
+
+  --background-color: #050505;
+  --background-secondary-color: #1c1d27;
+
+  --primary-font-regular: 'Maschine', sans-serif;
+  --primary-font-bold: 'MaschineBold', sans-serif;
+
+  --secondary-font-regular: 'Helvetica', sans-serif;
+  --secondary-font-bold: 'HelveticaBold', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 6.25%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16rem;
+  font-family: var(--secondary-font-regular);
+  color: var(--text-color);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  padding: 50px;
+}
+
+.gameboards-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  background-color: grey;
+  position: relative;
+}
+
+.gameboard-placeholder {
+  width: 450px;
+  height: 450px;
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  border: 2px solid red;
+}
+
+.gameboard {
+  grid-area: 2 / 2 / -1 / -1;
+  background-color: green;
+}
+
+.empty-coord-cell {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.coords {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Media Queries*/
+
+/* Media query for phones */
+@media only screen and (max-width: 767px) {
+  .container {
+    padding: 5px;
+  }
+  .gameboards-container {
+    flex-direction: column;
+  }
+  .gameboard-placeholder {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Media query for tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding: 5px;
+  }
+  .gameboard-placeholder {
+    width: 300px;
+    height: 300px;
+  }
+}
