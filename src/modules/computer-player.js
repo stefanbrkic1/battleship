@@ -4,11 +4,15 @@ class ComputerPlayer {
   }
 
   /* eslint-disable class-methods-use-this */
-  computerAttack(enemyGameboard) {
+  computerAttack(enemyGameboard, enemyGameboardDOM) {
     let attackCoordinates = ComputerPlayer.generateRandomCoords()
     while (enemyGameboard.missedAttacks.includes(attackCoordinates)) {
       attackCoordinates = ComputerPlayer.generateRandomCoords()
     }
+    const playerCellDOM = enemyGameboardDOM.querySelector(
+      `[data-value=${attackCoordinates}]`,
+    )
+    playerCellDOM.click()
     enemyGameboard.recieveAttack(attackCoordinates)
   }
 
@@ -18,7 +22,7 @@ class ComputerPlayer {
       'A'.charCodeAt(0) + Math.floor(Math.random() * 10),
     )
     // Create random number for the final coordinates
-    const randomNum = Math.floor(Math.random() * 11)
+    const randomNum = Math.floor(Math.random() * 10) + 1
 
     // Return random attack coordinates
     return `${randomChar}${randomNum}`
