@@ -81,25 +81,17 @@ body {
   position: relative;
 }
 
-.gameboard-placeholder {
-  width: 450px;
-  height: 450px;
-  display: grid;
-  grid-template-columns: repeat(11, 1fr);
-  grid-template-rows: repeat(11, 1fr);
-  border: 1px solid white;
+.display-none {
+  display: none !important;
 }
 
 .gameboard {
-  grid-area: 2 / 2 / -1 / -1;
+  width: 450px;
+  height: 450px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   border: 1px solid white;
-}
-
-.empty-coord-cell {
-  grid-area: 1 / 1 / 2 / 2;
 }
 
 .coords {
@@ -123,6 +115,39 @@ body {
 
 .hit-attack-cell {
   background-color: yellow;
+}
+
+.game-starter {
+  padding: 30px;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#nameInput {
+  appearance: none;
+  outline: none;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#readyBtn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 20rem;
+  appearance: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#shipTextDisplayer {
+  padding: 20px 0px;
 }
 
 /*Media Queries*/

@@ -101,6 +101,4 @@ class Game {
 
 const newGame = new Game()
 
-window.addEventListener('load', () => {
-  newGame.startGame()
-})
+window.addEventListener('load', () => {})
