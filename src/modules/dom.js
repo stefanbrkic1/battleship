@@ -1,4 +1,4 @@
-class gameboardDOMHandler {
+class GameboardDOMHandler {
   /* eslint-disable class-methods-use-this */
   renderGameboard(gameboard, DOMGameboard) {
     const allShipsCoordinates = []
@@ -6,7 +6,7 @@ class gameboardDOMHandler {
       allShipsCoordinates.push(ship.coordinates)
     })
     const occupiedCoordinates = [].concat(...allShipsCoordinates)
-    gameboardDOMHandler.createGameboard(
+    GameboardDOMHandler.createGameboard(
       gameboard,
       DOMGameboard,
       occupiedCoordinates,
@@ -63,6 +63,84 @@ class gameboardDOMHandler {
       })
     })
   }
+
+  /* eslint-disable no-use-before-define */
+  handleShipPlacement() {
+    const placingGameboard = document.getElementById('placingGameboard')
+    const placingCells = placingGameboard.querySelectorAll('.cell')
+
+    placingCells.forEach((cell) => {
+      cell.addEventListener('mouseover', handleCellHover)
+    })
+
+    placingCells.forEach((cell) => {
+      cell.addEventListener('mouseout', handleCellLeave)
+    })
+
+    let hoveredCell
+    let hoveredCoords
+    let coordX
+    let coordY
+    let ships
+    let currentShip
+    let adjacentCoords
+    let axis
+
+    function handleCellHover(e) {
+      hoveredCell = e.target
+      hoveredCoords = hoveredCell.dataset.value
+      coordX = [...hoveredCoords].at(0)
+      // Handle coordY based on number of digits
+      coordY =
+        hoveredCoords.length === 3
+          ? `${[...hoveredCoords].at(1)}${[...hoveredCoords].at(2)}`
+          : [...hoveredCoords].at(1)
+      // Define ship lengths
+      ships = [5, 4, 3, 3, 2]
+      currentShip = 0
+      adjacentCoords = []
+      axis = 'Y'
+
+      if (axis === 'Y') {
+        // Vertical ship
+        for (let i = 1; i < ships[currentShip]; i += 1) {
+          if (Number(coordY) + i <= 10) {
+            adjacentCoords.push(`${coordX}${Number(coordY) + i}`)
+          } else {
+            adjacentCoords = []
+          }
+        }
+      }
+
+      if (adjacentCoords.length === 0) {
+        hoveredCell.classList.add('invalid-placement-cell')
+      } else {
+        hoveredCell.classList.add('valid-placement-cell')
+        adjacentCoords.forEach((coord) => {
+          const adjacentCell = placingGameboard.querySelector(
+            `[data-value=${coord}]`,
+          )
+          if (adjacentCell) {
+            adjacentCell.classList.add('adjacent-cell')
+          }
+        })
+      }
+    }
+
+    function handleCellLeave() {
+      hoveredCell.classList.remove('invalid-placement-cell')
+      hoveredCell.classList.remove('valid-placement-cell')
+      adjacentCoords.forEach((coord) => {
+        const adjacentCell = placingGameboard.querySelector(
+          `[data-value=${coord}]`,
+        )
+        if (adjacentCell) {
+          adjacentCell.classList.remove('adjacent-cell')
+        }
+      })
+    }
+  }
+  /* eslint-enable no-use-before-define */
 }
 
-module.exports = gameboardDOMHandler
+module.exports = GameboardDOMHandler

@@ -126,6 +126,13 @@ body {
   flex-direction: column;
 }
 
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 #nameInput {
   appearance: none;
   outline: none;
@@ -148,6 +155,23 @@ body {
 
 #shipTextDisplayer {
   padding: 20px 0px;
+}
+
+#rotateBtn {
+  padding: 6px 10px;
+  background-color: #2d69eb;
+}
+
+.valid-placement-cell {
+  background-color: yellow;
+}
+
+.adjacent-cell {
+  background-color: yellow;
+}
+
+.invalid-placement-cell {
+  background-color: red;
 }
 
 /*Media Queries*/

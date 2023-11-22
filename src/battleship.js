@@ -5,6 +5,8 @@ const Gameboard = require('./modules/gameboard')
 const Player = require('./modules/player')
 const ComputerPlayer = require('./modules/computer-player')
 
+const gameboardDOM = new GameboardDOMHandler()
+
 class Game {
   constructor() {
     this.player = new Player('Stefan')
@@ -18,7 +20,6 @@ class Game {
   }
 
   startGame() {
-    const gameboardDOMHandler = new GameboardDOMHandler()
     // Predetermined Ships Coordinates
     this.playerGameboard.placeShip(5, 'A', '1', 'H')
     this.playerGameboard.placeShip(4, 'J', '1', 'V')
@@ -32,11 +33,8 @@ class Game {
     this.computerGameboard.placeShip(3, 'F', '9', 'H')
     this.computerGameboard.placeShip(2, 'H', '4', 'V')
 
-    gameboardDOMHandler.renderGameboard(
-      this.playerGameboard,
-      this.playerGameboardDOM,
-    )
-    gameboardDOMHandler.renderGameboard(
+    gameboardDOM.renderGameboard(this.playerGameboard, this.playerGameboardDOM)
+    gameboardDOM.renderGameboard(
       this.computerGameboard,
       this.computerGameboardDOM,
     )
@@ -101,4 +99,6 @@ class Game {
 
 const newGame = new Game()
 
-window.addEventListener('load', () => {})
+window.addEventListener('load', () => {
+  gameboardDOM.handleShipPlacement()
+})

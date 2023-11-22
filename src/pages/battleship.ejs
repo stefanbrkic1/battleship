@@ -10,108 +10,111 @@
       <form action="" class="game-starter">
         <label for="nameInput">Combatant Name</label>
         <input type="text" id="nameInput" />
-        <div id="shipTextDisplayer">Place your Carrier</div>
-        <div class="gameboard">
-          <div class="cell" data-value="A1"></div>
-          <div class="cell" data-value="B1"></div>
-          <div class="cell" data-value="C1"></div>
-          <div class="cell" data-value="D1"></div>
-          <div class="cell" data-value="E1"></div>
-          <div class="cell" data-value="F1"></div>
-          <div class="cell" data-value="G1"></div>
-          <div class="cell" data-value="H1"></div>
-          <div class="cell" data-value="I1"></div>
-          <div class="cell" data-value="J1"></div>
-          <div class="cell" data-value="A2"></div>
-          <div class="cell" data-value="B2"></div>
-          <div class="cell" data-value="C2"></div>
-          <div class="cell" data-value="D2"></div>
-          <div class="cell" data-value="E2"></div>
-          <div class="cell" data-value="F2"></div>
-          <div class="cell" data-value="G2"></div>
-          <div class="cell" data-value="H2"></div>
-          <div class="cell" data-value="I2"></div>
-          <div class="cell" data-value="J2"></div>
-          <div class="cell" data-value="A3"></div>
-          <div class="cell" data-value="B3"></div>
-          <div class="cell" data-value="C3"></div>
-          <div class="cell" data-value="D3"></div>
-          <div class="cell" data-value="E3"></div>
-          <div class="cell" data-value="F3"></div>
-          <div class="cell" data-value="G3"></div>
-          <div class="cell" data-value="H3"></div>
-          <div class="cell" data-value="I3"></div>
-          <div class="cell" data-value="J3"></div>
-          <div class="cell" data-value="A4"></div>
-          <div class="cell" data-value="B4"></div>
-          <div class="cell" data-value="C4"></div>
-          <div class="cell" data-value="D4"></div>
-          <div class="cell" data-value="E4"></div>
-          <div class="cell" data-value="F4"></div>
-          <div class="cell" data-value="G4"></div>
-          <div class="cell" data-value="H4"></div>
-          <div class="cell" data-value="I4"></div>
-          <div class="cell" data-value="J4"></div>
-          <div class="cell" data-value="A5"></div>
-          <div class="cell" data-value="B5"></div>
-          <div class="cell" data-value="C5"></div>
-          <div class="cell" data-value="D5"></div>
-          <div class="cell" data-value="E5"></div>
-          <div class="cell" data-value="F5"></div>
-          <div class="cell" data-value="G5"></div>
-          <div class="cell" data-value="H5"></div>
-          <div class="cell" data-value="I5"></div>
-          <div class="cell" data-value="J5"></div>
-          <div class="cell" data-value="A6"></div>
-          <div class="cell" data-value="B6"></div>
-          <div class="cell" data-value="C6"></div>
-          <div class="cell" data-value="D6"></div>
-          <div class="cell" data-value="E6"></div>
-          <div class="cell" data-value="F6"></div>
-          <div class="cell" data-value="G6"></div>
-          <div class="cell" data-value="H6"></div>
-          <div class="cell" data-value="I6"></div>
-          <div class="cell" data-value="J6"></div>
-          <div class="cell" data-value="A7"></div>
-          <div class="cell" data-value="B7"></div>
-          <div class="cell" data-value="C7"></div>
-          <div class="cell" data-value="D7"></div>
-          <div class="cell" data-value="E7"></div>
-          <div class="cell" data-value="F7"></div>
-          <div class="cell" data-value="G7"></div>
-          <div class="cell" data-value="H7"></div>
-          <div class="cell" data-value="I7"></div>
-          <div class="cell" data-value="J7"></div>
-          <div class="cell" data-value="A8"></div>
-          <div class="cell" data-value="B8"></div>
-          <div class="cell" data-value="C8"></div>
-          <div class="cell" data-value="D8"></div>
-          <div class="cell" data-value="E8"></div>
-          <div class="cell" data-value="F8"></div>
-          <div class="cell" data-value="G8"></div>
-          <div class="cell" data-value="H8"></div>
-          <div class="cell" data-value="I8"></div>
-          <div class="cell" data-value="J8"></div>
-          <div class="cell" data-value="A9"></div>
-          <div class="cell" data-value="B9"></div>
-          <div class="cell" data-value="C9"></div>
-          <div class="cell" data-value="D9"></div>
-          <div class="cell" data-value="E9"></div>
-          <div class="cell" data-value="F9"></div>
-          <div class="cell" data-value="G9"></div>
-          <div class="cell" data-value="H9"></div>
-          <div class="cell" data-value="I9"></div>
-          <div class="cell" data-value="J9"></div>
-          <div class="cell" data-value="A10"></div>
-          <div class="cell" data-value="B10"></div>
-          <div class="cell" data-value="C10"></div>
-          <div class="cell" data-value="D10"></div>
-          <div class="cell" data-value="E10"></div>
-          <div class="cell" data-value="F10"></div>
-          <div class="cell" data-value="G10"></div>
-          <div class="cell" data-value="H10"></div>
-          <div class="cell" data-value="I10"></div>
-          <div class="cell" data-value="J10"></div>
+        <div class="flex">
+          <div id="shipTextDisplayer">Place your Carrier</div>
+          <div id="rotateBtn"">Rotate</div>
+        </div>
+        <div class="gameboard" id="placingGameboard">
+          <div class="cell placing-cell" data-value="A1"></div>
+          <div class="cell placing-cell" data-value="B1"></div>
+          <div class="cell placing-cell" data-value="C1"></div>
+          <div class="cell placing-cell" data-value="D1"></div>
+          <div class="cell placing-cell" data-value="E1"></div>
+          <div class="cell placing-cell" data-value="F1"></div>
+          <div class="cell placing-cell" data-value="G1"></div>
+          <div class="cell placing-cell" data-value="H1"></div>
+          <div class="cell placing-cell" data-value="I1"></div>
+          <div class="cell placing-cell" data-value="J1"></div>
+          <div class="cell placing-cell" data-value="A2"></div>
+          <div class="cell placing-cell" data-value="B2"></div>
+          <div class="cell placing-cell" data-value="C2"></div>
+          <div class="cell placing-cell" data-value="D2"></div>
+          <div class="cell placing-cell" data-value="E2"></div>
+          <div class="cell placing-cell" data-value="F2"></div>
+          <div class="cell placing-cell" data-value="G2"></div>
+          <div class="cell placing-cell" data-value="H2"></div>
+          <div class="cell placing-cell" data-value="I2"></div>
+          <div class="cell placing-cell" data-value="J2"></div>
+          <div class="cell placing-cell" data-value="A3"></div>
+          <div class="cell placing-cell" data-value="B3"></div>
+          <div class="cell placing-cell" data-value="C3"></div>
+          <div class="cell placing-cell" data-value="D3"></div>
+          <div class="cell placing-cell" data-value="E3"></div>
+          <div class="cell placing-cell" data-value="F3"></div>
+          <div class="cell placing-cell" data-value="G3"></div>
+          <div class="cell placing-cell" data-value="H3"></div>
+          <div class="cell placing-cell" data-value="I3"></div>
+          <div class="cell placing-cell" data-value="J3"></div>
+          <div class="cell placing-cell" data-value="A4"></div>
+          <div class="cell placing-cell" data-value="B4"></div>
+          <div class="cell placing-cell" data-value="C4"></div>
+          <div class="cell placing-cell" data-value="D4"></div>
+          <div class="cell placing-cell" data-value="E4"></div>
+          <div class="cell placing-cell" data-value="F4"></div>
+          <div class="cell placing-cell" data-value="G4"></div>
+          <div class="cell placing-cell" data-value="H4"></div>
+          <div class="cell placing-cell" data-value="I4"></div>
+          <div class="cell placing-cell" data-value="J4"></div>
+          <div class="cell placing-cell" data-value="A5"></div>
+          <div class="cell placing-cell" data-value="B5"></div>
+          <div class="cell placing-cell" data-value="C5"></div>
+          <div class="cell placing-cell" data-value="D5"></div>
+          <div class="cell placing-cell" data-value="E5"></div>
+          <div class="cell placing-cell" data-value="F5"></div>
+          <div class="cell placing-cell" data-value="G5"></div>
+          <div class="cell placing-cell" data-value="H5"></div>
+          <div class="cell placing-cell" data-value="I5"></div>
+          <div class="cell placing-cell" data-value="J5"></div>
+          <div class="cell placing-cell" data-value="A6"></div>
+          <div class="cell placing-cell" data-value="B6"></div>
+          <div class="cell placing-cell" data-value="C6"></div>
+          <div class="cell placing-cell" data-value="D6"></div>
+          <div class="cell placing-cell" data-value="E6"></div>
+          <div class="cell placing-cell" data-value="F6"></div>
+          <div class="cell placing-cell" data-value="G6"></div>
+          <div class="cell placing-cell" data-value="H6"></div>
+          <div class="cell placing-cell" data-value="I6"></div>
+          <div class="cell placing-cell" data-value="J6"></div>
+          <div class="cell placing-cell" data-value="A7"></div>
+          <div class="cell placing-cell" data-value="B7"></div>
+          <div class="cell placing-cell" data-value="C7"></div>
+          <div class="cell placing-cell" data-value="D7"></div>
+          <div class="cell placing-cell" data-value="E7"></div>
+          <div class="cell placing-cell" data-value="F7"></div>
+          <div class="cell placing-cell" data-value="G7"></div>
+          <div class="cell placing-cell" data-value="H7"></div>
+          <div class="cell placing-cell" data-value="I7"></div>
+          <div class="cell placing-cell" data-value="J7"></div>
+          <div class="cell placing-cell" data-value="A8"></div>
+          <div class="cell placing-cell" data-value="B8"></div>
+          <div class="cell placing-cell" data-value="C8"></div>
+          <div class="cell placing-cell" data-value="D8"></div>
+          <div class="cell placing-cell" data-value="E8"></div>
+          <div class="cell placing-cell" data-value="F8"></div>
+          <div class="cell placing-cell" data-value="G8"></div>
+          <div class="cell placing-cell" data-value="H8"></div>
+          <div class="cell placing-cell" data-value="I8"></div>
+          <div class="cell placing-cell" data-value="J8"></div>
+          <div class="cell placing-cell" data-value="A9"></div>
+          <div class="cell placing-cell" data-value="B9"></div>
+          <div class="cell placing-cell" data-value="C9"></div>
+          <div class="cell placing-cell" data-value="D9"></div>
+          <div class="cell placing-cell" data-value="E9"></div>
+          <div class="cell placing-cell" data-value="F9"></div>
+          <div class="cell placing-cell" data-value="G9"></div>
+          <div class="cell placing-cell" data-value="H9"></div>
+          <div class="cell placing-cell" data-value="I9"></div>
+          <div class="cell placing-cell" data-value="J9"></div>
+          <div class="cell placing-cell" data-value="A10"></div>
+          <div class="cell placing-cell" data-value="B10"></div>
+          <div class="cell placing-cell" data-value="C10"></div>
+          <div class="cell placing-cell" data-value="D10"></div>
+          <div class="cell placing-cell" data-value="E10"></div>
+          <div class="cell placing-cell" data-value="F10"></div>
+          <div class="cell placing-cell" data-value="G10"></div>
+          <div class="cell placing-cell" data-value="H10"></div>
+          <div class="cell placing-cell" data-value="I10"></div>
+          <div class="cell placing-cell" data-value="J10"></div>
         </div>
         <button type="submit" id="readyBtn">READY</button>
       </form>
