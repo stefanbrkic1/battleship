@@ -10,11 +10,7 @@ class GameboardDOMHandler {
       allShipsCoordinates.push(ship.coordinates)
     })
     const occupiedCoordinates = [].concat(...allShipsCoordinates)
-    GameboardDOMHandler.createGameboard(
-      gameboard,
-      DOMGameboard,
-      occupiedCoordinates,
-    )
+    GameboardDOMHandler.createGameboard(DOMGameboard, occupiedCoordinates)
 
     this.handleEmptyCells()
     this.handleOccupiedCells()
@@ -162,17 +158,33 @@ class GameboardDOMHandler {
       const clickedCell = e.target
       if (!clickedCell.classList.contains('invalid-placement-cell')) {
         const clickedCoords = clickedCell.dataset.value
+
+        // Extract Coordinates
+        coordX = [...clickedCoords].at(0)
+        coordY =
+          hoveredCoords.length === 3
+            ? `${[...clickedCoords].at(1)}${[...clickedCoords].at(2)}`
+            : [...clickedCoords].at(1)
+
+        // Add placing coordinate to playerPlacingCoords
         if (currentShip <= 5) {
-          this.playerPlacingCoords.push(clickedCoords)
+          this.playerPlacingCoords.push({
+            length: ships[currentShip],
+            coordX,
+            coordY,
+            rotation,
+          })
+
+          // Move to next ship
           currentShip += 1
+
+          // Place ship on placingGameboard visually
           clickedCell.classList.add('placed-cell')
           adjacentCoords.forEach((coord) => {
             adjacentCell = placingGameboard.querySelector(
               `[data-value=${coord}]`,
             )
-            if (adjacentCell) {
-              adjacentCell.classList.add('placed-cell')
-            }
+            adjacentCell.classList.add('placed-cell')
           })
         }
       }

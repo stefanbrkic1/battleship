@@ -6,7 +6,7 @@ class Gameboard {
     this.missedAttacks = []
   }
 
-  static createCoordinates(length, coordinateX, coordinateY, direction) {
+  static createCoordinates(length, coordinateX, coordinateY, rotation) {
     const coordinates = []
     let x = coordinateX
     let y = coordinateY
@@ -14,9 +14,9 @@ class Gameboard {
     for (let i = 0; i < length; i += 1) {
       coordinates.push(`${x}${y}`)
 
-      if (direction === 'H') {
+      if (rotation === 'HORIZONTAL') {
         x = String.fromCharCode(x.charCodeAt(0) + 1)
-      } else if (direction === 'V') {
+      } else if (rotation === 'VERTICAL') {
         y = Number(y) + 1
       }
     }
@@ -25,12 +25,12 @@ class Gameboard {
   }
 
   /* eslint-disable no-param-reassign */
-  placeShip(length, coordinateX, coordinateY, direction) {
+  placeShip(length, coordinateX, coordinateY, rotation) {
     const coords = Gameboard.createCoordinates(
       length,
       coordinateX,
       coordinateY,
-      direction,
+      rotation,
     )
     const newShip = new Ship(length, coords)
     this.ships.push(newShip)

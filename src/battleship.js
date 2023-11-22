@@ -20,18 +20,21 @@ class Game {
   }
 
   startGame() {
-    // Predetermined Ships Coordinates
-    this.playerGameboard.placeShip(5, 'A', '1', 'H')
-    this.playerGameboard.placeShip(4, 'J', '1', 'V')
-    this.playerGameboard.placeShip(3, 'A', '10', 'H')
-    this.playerGameboard.placeShip(3, 'F', '9', 'H')
-    this.playerGameboard.placeShip(2, 'H', '4', 'V')
-
-    this.computerGameboard.placeShip(5, 'A', '1', 'H')
-    this.computerGameboard.placeShip(4, 'J', '1', 'V')
-    this.computerGameboard.placeShip(3, 'A', '10', 'H')
-    this.computerGameboard.placeShip(3, 'F', '9', 'H')
-    this.computerGameboard.placeShip(2, 'H', '4', 'V')
+    const playerCoords = gameboardDOM.playerPlacingCoords
+    playerCoords.forEach((coord) => {
+      this.playerGameboard.placeShip(
+        coord.length,
+        coord.coordX,
+        coord.coordY,
+        coord.rotation,
+      )
+    })
+    // Predetermined Computer Ships Coordinates
+    this.computerGameboard.placeShip(5, 'A', '1', 'HORIZONTAL')
+    this.computerGameboard.placeShip(4, 'J', '1', 'VERTICAL')
+    this.computerGameboard.placeShip(3, 'A', '10', 'HORIZONTAL')
+    this.computerGameboard.placeShip(3, 'F', '9', 'HORIZONTAL')
+    this.computerGameboard.placeShip(2, 'H', '4', 'VERTICAL')
 
     gameboardDOM.renderGameboard(this.playerGameboard, this.playerGameboardDOM)
     gameboardDOM.renderGameboard(
@@ -99,7 +102,28 @@ class Game {
 
 const newGame = new Game()
 
+function handleStartGame() {
+  const startForm = document.getElementById('startForm')
+  const readyBtn = document.getElementById('readyBtn')
+
+  // Prevent form from submiting to server
+  startForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+  })
+  // Start game when player is ready
+  readyBtn.addEventListener('click', () => {
+    const gameboardsContainer = document.getElementById('gameboardsContainer')
+    const playerCoords = gameboardDOM.playerPlacingCoords
+    if (playerCoords.length === 5) {
+      startForm.classList.add('display-none')
+      gameboardsContainer.classList.remove('display-none')
+      newGame.startGame()
+    }
+  })
+}
+
 window.addEventListener('load', () => {
+  handleStartGame()
   handleRotationButton()
   gameboardDOM.handlePlayerPlacement()
 })

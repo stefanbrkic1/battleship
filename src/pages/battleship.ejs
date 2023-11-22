@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="container">
-      <form action="" class="game-starter">
+      <form action="" id="startForm">
         <input type="text" id="nameInput" placeholder="Your Name" required />
         <div class="placing-displayer">
           <div id="shipTextDisplayer">Place your Carrier</div>
@@ -120,7 +120,7 @@
         </div>
         <button type="submit" id="readyBtn">READY</button>
       </form>
-      <div class="gameboards-container display-none">
+      <div class="gameboards-container display-none" id="gameboardsContainer">
         <div class="gameboard" id="playerGameboard"></div>
         <div class="gameboard" id="computerGameboard"></div>
       </div>
