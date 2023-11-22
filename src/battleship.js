@@ -101,5 +101,5 @@ const newGame = new Game()
 
 window.addEventListener('load', () => {
   handleRotationButton()
-  gameboardDOM.handleShipPlacement()
+  gameboardDOM.handlePlayerPlacement()
 })

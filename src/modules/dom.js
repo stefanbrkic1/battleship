@@ -1,4 +1,8 @@
 class GameboardDOMHandler {
+  constructor() {
+    this.playerPlacingCoords = []
+  }
+
   /* eslint-disable class-methods-use-this */
   renderGameboard(gameboard, DOMGameboard) {
     const allShipsCoordinates = []
@@ -65,7 +69,7 @@ class GameboardDOMHandler {
   }
 
   /* eslint-disable no-use-before-define */
-  handleShipPlacement() {
+  handlePlayerPlacement() {
     const placingGameboard = document.getElementById('placingGameboard')
     const placingCells = placingGameboard.querySelectorAll('.cell')
 
@@ -77,13 +81,18 @@ class GameboardDOMHandler {
       cell.addEventListener('mouseout', handleCellLeave)
     })
 
+    placingCells.forEach((cell) => {
+      cell.addEventListener('click', handleCellClick.bind(this))
+    })
+
     let hoveredCell
     let hoveredCoords
     let coordX
     let coordY
     let ships
-    let currentShip
+    let currentShip = 0
     let adjacentCoords
+    let adjacentCell
     let rotation
 
     function handleCellHover(e) {
@@ -97,7 +106,6 @@ class GameboardDOMHandler {
           : [...hoveredCoords].at(1)
       // Define ship lengths
       ships = [5, 4, 3, 3, 2]
-      currentShip = 0
       adjacentCoords = []
       rotation = document.getElementById('rotateBtn').textContent
 
@@ -129,9 +137,7 @@ class GameboardDOMHandler {
       } else {
         hoveredCell.classList.add('valid-placement-cell')
         adjacentCoords.forEach((coord) => {
-          const adjacentCell = placingGameboard.querySelector(
-            `[data-value=${coord}]`,
-          )
+          adjacentCell = placingGameboard.querySelector(`[data-value=${coord}]`)
           if (adjacentCell) {
             adjacentCell.classList.add('adjacent-cell')
           }
@@ -144,13 +150,31 @@ class GameboardDOMHandler {
         hoveredCell.classList.remove('invalid-placement-cell')
         hoveredCell.classList.remove('valid-placement-cell')
         adjacentCoords.forEach((coord) => {
-          const adjacentCell = placingGameboard.querySelector(
-            `[data-value=${coord}]`,
-          )
+          adjacentCell = placingGameboard.querySelector(`[data-value=${coord}]`)
           if (adjacentCell) {
             adjacentCell.classList.remove('adjacent-cell')
           }
         })
+      }
+    }
+
+    function handleCellClick(e) {
+      const clickedCell = e.target
+      if (!clickedCell.classList.contains('invalid-placement-cell')) {
+        const clickedCoords = clickedCell.dataset.value
+        if (currentShip <= 5) {
+          this.playerPlacingCoords.push(clickedCoords)
+          currentShip += 1
+          clickedCell.classList.add('placed-cell')
+          adjacentCoords.forEach((coord) => {
+            adjacentCell = placingGameboard.querySelector(
+              `[data-value=${coord}]`,
+            )
+            if (adjacentCell) {
+              adjacentCell.classList.add('placed-cell')
+            }
+          })
+        }
       }
     }
   }

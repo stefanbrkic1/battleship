@@ -146,7 +146,6 @@ body {
   padding: 10px;
   border: none;
   width: 100%;
-  margin-top: 10px;
 }
 
 #readyBtn {
@@ -185,6 +184,11 @@ body {
 
 .invalid-placement-cell {
   background-color: red;
+}
+
+.placed-cell {
+  background-color: green !important;
+  pointer-events: none;
 }
 
 /*Media Queries*/
