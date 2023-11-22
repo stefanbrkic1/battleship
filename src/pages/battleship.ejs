@@ -10,9 +10,12 @@
       <form action="" class="game-starter">
         <label for="nameInput">Combatant Name</label>
         <input type="text" id="nameInput" />
-        <div class="flex">
+        <div class="placing-displayer">
           <div id="shipTextDisplayer">Place your Carrier</div>
-          <div id="rotateBtn"">Rotate</div>
+          <div class="axis-container">
+            <div>Rotation:</div>
+            <div id="rotateBtn">HORIZONTAL</div>
+          </div>
         </div>
         <div class="gameboard" id="placingGameboard">
           <div class="cell placing-cell" data-value="A1"></div>

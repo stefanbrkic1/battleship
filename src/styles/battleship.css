@@ -126,7 +126,14 @@ body {
   flex-direction: column;
 }
 
-.flex {
+.placing-displayer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.axis-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,8 +165,14 @@ body {
 }
 
 #rotateBtn {
-  padding: 6px 10px;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #2d69eb;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .valid-placement-cell {

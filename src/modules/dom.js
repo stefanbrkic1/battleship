@@ -16,7 +16,7 @@ class GameboardDOMHandler {
     this.handleOccupiedCells()
   }
 
-  static createGameboard(gameboard, DOMGameboard, occupiedCoordinates) {
+  static createGameboard(DOMGameboard, occupiedCoordinates) {
     // Loop through columns (1 to 10)
     for (let j = 1; j <= 10; j += 1) {
       // Loop through rows (A to J)
@@ -84,7 +84,7 @@ class GameboardDOMHandler {
     let ships
     let currentShip
     let adjacentCoords
-    let axis
+    let rotation
 
     function handleCellHover(e) {
       hoveredCell = e.target
@@ -99,13 +99,25 @@ class GameboardDOMHandler {
       ships = [5, 4, 3, 3, 2]
       currentShip = 0
       adjacentCoords = []
-      axis = 'Y'
+      rotation = document.getElementById('rotateBtn').textContent
 
-      if (axis === 'Y') {
+      if (rotation === 'VERTICAL') {
         // Vertical ship
         for (let i = 1; i < ships[currentShip]; i += 1) {
           if (Number(coordY) + i <= 10) {
             adjacentCoords.push(`${coordX}${Number(coordY) + i}`)
+          } else {
+            adjacentCoords = []
+          }
+        }
+      }
+
+      if (rotation === 'HORIZONTAL') {
+        // Horizontal ship
+        const columnIndex = 'ABCDEFGHIJ'.indexOf(coordX)
+        for (let i = 1; i < ships[currentShip]; i += 1) {
+          if (columnIndex + i < 10) {
+            adjacentCoords.push(`ABCDEFGHIJ`[columnIndex + i] + coordY)
           } else {
             adjacentCoords = []
           }
@@ -128,16 +140,18 @@ class GameboardDOMHandler {
     }
 
     function handleCellLeave() {
-      hoveredCell.classList.remove('invalid-placement-cell')
-      hoveredCell.classList.remove('valid-placement-cell')
-      adjacentCoords.forEach((coord) => {
-        const adjacentCell = placingGameboard.querySelector(
-          `[data-value=${coord}]`,
-        )
-        if (adjacentCell) {
-          adjacentCell.classList.remove('adjacent-cell')
-        }
-      })
+      if (hoveredCell) {
+        hoveredCell.classList.remove('invalid-placement-cell')
+        hoveredCell.classList.remove('valid-placement-cell')
+        adjacentCoords.forEach((coord) => {
+          const adjacentCell = placingGameboard.querySelector(
+            `[data-value=${coord}]`,
+          )
+          if (adjacentCell) {
+            adjacentCell.classList.remove('adjacent-cell')
+          }
+        })
+      }
     }
   }
   /* eslint-enable no-use-before-define */
