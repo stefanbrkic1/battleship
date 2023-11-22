@@ -1,6 +1,6 @@
 import './styles/battleship.css'
 
-const GameboardDOMHandler = require('./modules/dom')
+const { GameboardDOMHandler, handleRotationButton } = require('./modules/dom')
 const Gameboard = require('./modules/gameboard')
 const Player = require('./modules/player')
 const ComputerPlayer = require('./modules/computer-player')
@@ -100,5 +100,6 @@ class Game {
 const newGame = new Game()
 
 window.addEventListener('load', () => {
+  handleRotationButton()
   gameboardDOM.handleShipPlacement()
 })

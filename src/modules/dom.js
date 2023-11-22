@@ -157,4 +157,15 @@ class GameboardDOMHandler {
   /* eslint-enable no-use-before-define */
 }
 
-module.exports = GameboardDOMHandler
+function handleRotationButton() {
+  const rotateBtn = document.getElementById('rotateBtn')
+  rotateBtn.addEventListener('click', () => {
+    if (rotateBtn.textContent === 'HORIZONTAL') {
+      rotateBtn.textContent = 'VERTICAL'
+    } else {
+      rotateBtn.textContent = 'HORIZONTAL'
+    }
+  })
+}
+
+module.exports = { GameboardDOMHandler, handleRotationButton }
