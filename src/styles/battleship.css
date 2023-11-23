@@ -102,19 +102,16 @@ body {
 
 .cell {
   border: 1px solid white;
-  cursor: pointer;
-}
-
-.disabled-attack {
-  pointer-events: none;
 }
 
 .missed-attack-cell {
   background-color: #2d69eb;
+  cursor: not-allowed;
 }
 
 .hit-attack-cell {
-  background-color: yellow;
+  background-color: pink;
+  cursor: not-allowed;
 }
 
 .placing-displayer {
@@ -180,6 +177,18 @@ body {
 .placed-cell {
   background-color: green !important;
   pointer-events: none;
+}
+
+#placingGameboard {
+  cursor: pointer;
+}
+
+#playerGameboard {
+  pointer-events: none;
+}
+
+#computerGameboard {
+  cursor: crosshair;
 }
 
 /*Media Queries*/

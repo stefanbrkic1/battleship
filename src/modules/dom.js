@@ -11,9 +11,6 @@ class GameboardDOMHandler {
     })
     const occupiedCoordinates = [].concat(...allShipsCoordinates)
     GameboardDOMHandler.createGameboard(DOMGameboard, occupiedCoordinates)
-
-    this.handleEmptyCells()
-    this.handleOccupiedCells()
   }
 
   static createGameboard(DOMGameboard, occupiedCoordinates) {
@@ -42,26 +39,6 @@ class GameboardDOMHandler {
         DOMGameboard.appendChild(cell)
       }
     }
-  }
-
-  handleEmptyCells() {
-    const emptyCells = document.querySelectorAll('.empty-coordinate')
-
-    emptyCells.forEach((cell) => {
-      cell.addEventListener('click', () => {
-        cell.classList.add('missed-attack-cell')
-      })
-    })
-  }
-
-  handleOccupiedCells() {
-    const occupiedCells = document.querySelectorAll('.occupied-coordinate')
-
-    occupiedCells.forEach((cell) => {
-      cell.addEventListener('click', () => {
-        cell.classList.add('hit-attack-cell')
-      })
-    })
   }
 
   /* eslint-disable no-use-before-define */
@@ -156,7 +133,10 @@ class GameboardDOMHandler {
 
     function handleCellClick(e) {
       const clickedCell = e.target
-      if (!clickedCell.classList.contains('invalid-placement-cell')) {
+      if (
+        !clickedCell.classList.contains('invalid-placement-cell') &&
+        !clickedCell.classList.contains('disabled-attack')
+      ) {
         const clickedCoords = clickedCell.dataset.value
 
         // Extract Coordinates
@@ -193,6 +173,15 @@ class GameboardDOMHandler {
   /* eslint-enable no-use-before-define */
 }
 
+function handleCellStyling(cell) {
+  // Update Cell Styling
+  if (cell.classList.contains('empty-coordinate')) {
+    cell.classList.add('missed-attack-cell')
+  } else if (cell.classList.contains('occupied-coordinate')) {
+    cell.classList.add('hit-attack-cell')
+  }
+}
+
 function handleRotationButton() {
   const rotateBtn = document.getElementById('rotateBtn')
   rotateBtn.addEventListener('click', () => {
@@ -204,4 +193,8 @@ function handleRotationButton() {
   })
 }
 
-module.exports = { GameboardDOMHandler, handleRotationButton }
+module.exports = {
+  GameboardDOMHandler,
+  handleRotationButton,
+  handleCellStyling,
+}

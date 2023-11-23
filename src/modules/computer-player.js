@@ -1,3 +1,5 @@
+const { handleCellStyling } = require('./dom')
+
 class ComputerPlayer {
   constructor() {
     this.name = 'Computer'
@@ -12,13 +14,15 @@ class ComputerPlayer {
     ) {
       attackCoordinates = ComputerPlayer.generateRandomCoords()
     }
+    ComputerPlayer.computerAttackDOM(enemyGameboardDOM, attackCoordinates)
+    enemyGameboard.recieveAttack(attackCoordinates)
+  }
+
+  static computerAttackDOM(enemyGameboardDOM, attackCoordinates) {
     const playerCellDOM = enemyGameboardDOM.querySelector(
       `[data-value=${attackCoordinates}]`,
     )
-    console.log(attackCoordinates)
-    console.log(playerCellDOM)
-    playerCellDOM.click()
-    enemyGameboard.recieveAttack(attackCoordinates)
+    handleCellStyling(playerCellDOM)
   }
 
   static generateRandomCoords() {

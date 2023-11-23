@@ -1,6 +1,10 @@
 import './styles/battleship.css'
 
-const { GameboardDOMHandler, handleRotationButton } = require('./modules/dom')
+const {
+  GameboardDOMHandler,
+  handleRotationButton,
+  handleCellStyling,
+} = require('./modules/dom')
 const Gameboard = require('./modules/gameboard')
 const Player = require('./modules/player')
 const ComputerPlayer = require('./modules/computer-player')
@@ -16,6 +20,7 @@ class Game {
     this.computerGameboard = new Gameboard()
     this.playerGameboardDOM = document.getElementById('playerGameboard')
     this.computerGameboardDOM = document.getElementById('computerGameboard')
+    this.computerGameboardDOM.addEventListener('click', this.handlePlayerClick)
     this.isGameOver = false
   }
 
@@ -55,9 +60,14 @@ class Game {
   handlePlayerClick = (e) => {
     if (this.currentPlayerTurn === this.player.name) {
       const clickedCell = e.target
-      clickedCell.classList.add('disabled-attack')
+
+      // Update Cell Styling
+      handleCellStyling(clickedCell)
+
+      // Perform attack
       this.player.attack(this.computerGameboard, clickedCell.dataset.value)
-      this.computerGameboardDOM.classList.add('disabled-attack')
+
+      // Switch turn and continue the game loop
       this.switchPlayerTurn()
       this.gameLoop() // Continue the game loop after the player's attack
     }
@@ -71,7 +81,10 @@ class Game {
           this.playerGameboard,
           this.playerGameboardDOM,
         )
-        this.computerGameboardDOM.classList.remove('disabled-attack')
+      }, 1000)
+
+      // Switch to player
+      setTimeout(() => {
         this.switchPlayerTurn()
         this.gameLoop() // Continue the game loop after the computer's attack
       }, 1000)
@@ -93,7 +106,6 @@ class Game {
     // If the game is not over perform turn handlers which check if it's their turn
 
     // Check if it's players turn
-    this.computerGameboardDOM.addEventListener('click', this.handlePlayerClick)
 
     // Check if it's computers turn
     this.handleComputerTurn()
