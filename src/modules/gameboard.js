@@ -4,6 +4,7 @@ class Gameboard {
   constructor() {
     this.ships = []
     this.missedAttacks = []
+    this.goodAttacks = []
   }
 
   static createCoordinates(length, coordinateX, coordinateY, rotation) {
@@ -46,6 +47,7 @@ class Gameboard {
     if (hittedShipIndex !== -1) {
       const hittedShip = this.ships[hittedShipIndex]
       hittedShip.hit()
+      this.goodAttacks.push(attackCoordinates)
     } else {
       // If no ship is found, record the attackCoordinates as a missed attack
       this.missedAttacks.push(attackCoordinates)
