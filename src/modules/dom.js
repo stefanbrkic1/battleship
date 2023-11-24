@@ -1,3 +1,6 @@
+const modal = document.querySelector('[data-modal]')
+const modalOverlay = document.querySelector('.overlay')
+
 class GameboardDOMHandler {
   constructor() {
     this.playerPlacingCoords = []
@@ -203,6 +206,7 @@ class GameboardDOMHandler {
         shipName = 'DESTROYER'
         break
       default:
+        shipName = 'NO SHIPS LEFT'
     }
 
     this.shipTextDisplayer.textContent = `SHIP: ${shipName}`
@@ -229,8 +233,29 @@ function handleRotationButton() {
   })
 }
 
+function openGameOverModal() {
+  modalOverlay.classList.add('modal-open')
+  modal.showModal()
+}
+
+function closeGameOverModal() {
+  modalOverlay.classList.remove('modal-open')
+  modal.close()
+}
+
+function handleGameRestart() {
+  const playAgainBtn = document.getElementById('playAgainBtn')
+  playAgainBtn.addEventListener('click', () => {
+    window.location.reload()
+    closeGameOverModal()
+  })
+}
+
 module.exports = {
   GameboardDOMHandler,
   handleRotationButton,
   handleCellStyling,
+  openGameOverModal,
+  closeGameOverModal,
+  handleGameRestart,
 }

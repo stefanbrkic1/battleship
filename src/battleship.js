@@ -4,6 +4,8 @@ const {
   GameboardDOMHandler,
   handleRotationButton,
   handleCellStyling,
+  openGameOverModal,
+  handleGameRestart,
 } = require('./modules/dom')
 const Gameboard = require('./modules/gameboard')
 const Player = require('./modules/player')
@@ -108,7 +110,7 @@ class Game {
       this.playerGameboard.areAllShipsSunk() === true ||
       this.computerGameboard.areAllShipsSunk() === true
     ) {
-      console.log('GAME OVER')
+      openGameOverModal()
       this.isGameOver = true
     }
 
@@ -143,4 +145,5 @@ window.addEventListener('load', () => {
   handleStartGame()
   handleRotationButton()
   gameboardDOM.handlePlayerPlacement()
+  handleGameRestart()
 })
