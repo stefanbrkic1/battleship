@@ -25,6 +25,7 @@ class Game {
   }
 
   startGame() {
+    // Place player ships according to his placed coordinates
     const playerCoords = gameboardDOM.playerPlacingCoords
     playerCoords.forEach((coord) => {
       this.playerGameboard.placeShip(
@@ -41,12 +42,14 @@ class Game {
     this.computerGameboard.placeShip(3, 'F', '9', 'HORIZONTAL')
     this.computerGameboard.placeShip(2, 'H', '4', 'VERTICAL')
 
+    // Render placed ships to DOM Gameboard
     gameboardDOM.renderGameboard(this.playerGameboard, this.playerGameboardDOM)
     gameboardDOM.renderGameboard(
       this.computerGameboard,
       this.computerGameboardDOM,
     )
 
+    // Start game loop
     this.gameLoop()
   }
 

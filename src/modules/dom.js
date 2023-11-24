@@ -1,6 +1,7 @@
 class GameboardDOMHandler {
   constructor() {
     this.playerPlacingCoords = []
+    this.shipTextDisplayer = document.getElementById('shipTextDisplayer')
   }
 
   /* eslint-disable class-methods-use-this */
@@ -166,6 +167,9 @@ class GameboardDOMHandler {
           // Move to next ship
           currentShip += 1
 
+          // Update DOM text
+          this.updateShipPlacingText(currentShip)
+
           // Place ship on placingGameboard visually
           clickedCell.classList.add('placed-cell')
           adjacentCoords.forEach((coord) => {
@@ -178,7 +182,31 @@ class GameboardDOMHandler {
       }
     }
   }
+
   /* eslint-enable no-use-before-define */
+  updateShipPlacingText(currentShip) {
+    let shipName = ''
+    switch (currentShip) {
+      case 0:
+        shipName = 'CARRIER'
+        break
+      case 1:
+        shipName = 'BATTLESHIP'
+        break
+      case 2:
+        shipName = 'CRUISER'
+        break
+      case 3:
+        shipName = 'SUBMARINE'
+        break
+      case 4:
+        shipName = 'DESTROYER'
+        break
+      default:
+    }
+
+    this.shipTextDisplayer.textContent = `SHIP: ${shipName}`
+  }
 }
 
 function handleCellStyling(cell) {
