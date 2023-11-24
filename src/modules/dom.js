@@ -35,6 +35,14 @@ class GameboardDOMHandler {
           cell.classList.add('empty-coordinate')
         }
 
+        // Make the player cells visible
+        if (
+          DOMGameboard.id === 'playerGameboard' &&
+          occupiedCoordinates.includes(cell.dataset.value)
+        ) {
+          cell.classList.add('player-placed-cell')
+        }
+
         // Append the cell to the DOMGameboard
         DOMGameboard.appendChild(cell)
       }

@@ -105,12 +105,12 @@ body {
 }
 
 .missed-attack-cell {
-  background-color: #2d69eb;
+  background-color: #2d69eb !important;
   cursor: not-allowed;
 }
 
 .hit-attack-cell {
-  background-color: red;
+  background-color: red !important;
   cursor: not-allowed;
 }
 
@@ -175,8 +175,12 @@ body {
 }
 
 .placed-cell {
-  background-color: green !important;
+  background-color: grey !important;
   pointer-events: none;
+}
+
+.player-placed-cell {
+  background-color: grey;
 }
 
 #placingGameboard {
