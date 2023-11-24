@@ -110,7 +110,7 @@ body {
 }
 
 .hit-attack-cell {
-  background-color: pink;
+  background-color: red;
   cursor: not-allowed;
 }
 

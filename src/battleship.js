@@ -58,9 +58,16 @@ class Game {
   }
 
   handlePlayerClick = (e) => {
+    const clickedCell = e.target
+    // Prevent player from attacking already attacked coordinates
+    if (
+      clickedCell.classList.contains('missed-attack-cell') ||
+      clickedCell.classList.contains('hit-attack-cell')
+    ) {
+      return
+    }
+    // Check if it's players turn and perform attacks
     if (this.currentPlayerTurn === this.player.name) {
-      const clickedCell = e.target
-
       // Update Cell Styling
       handleCellStyling(clickedCell)
 
@@ -81,10 +88,7 @@ class Game {
           this.playerGameboard,
           this.playerGameboardDOM,
         )
-      }, 1000)
-
-      // Switch to player
-      setTimeout(() => {
+        // Switch to player
         this.switchPlayerTurn()
         this.gameLoop() // Continue the game loop after the computer's attack
       }, 1000)
@@ -101,11 +105,9 @@ class Game {
       this.playerGameboard.areAllShipsSunk() === true ||
       this.computerGameboard.areAllShipsSunk() === true
     ) {
+      console.log('GAME OVER')
       this.isGameOver = true
     }
-    // If the game is not over perform turn handlers which check if it's their turn
-
-    // Check if it's players turn
 
     // Check if it's computers turn
     this.handleComputerTurn()
