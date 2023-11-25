@@ -232,6 +232,10 @@ body {
   cursor: pointer;
 }
 
+.disable-attack {
+  cursor: not-allowed !important;
+}
+
 /*Media Queries*/
 
 /* Media query for phones */

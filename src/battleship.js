@@ -79,8 +79,9 @@ class Game {
       // Perform attack
       this.player.attack(this.computerGameboard, clickedCell.dataset.value)
 
-      // Switch turn and continue the game loop
+      // Switch turn and disable player click
       this.switchPlayerTurn()
+      this.computerGameboardDOM.classList.add('disable-attack')
       this.gameLoop() // Continue the game loop after the player's attack
     }
   }
@@ -95,6 +96,7 @@ class Game {
         )
         // Switch to player
         this.switchPlayerTurn()
+        this.computerGameboardDOM.classList.remove('disable-attack')
         this.gameLoop() // Continue the game loop after the computer's attack
       }, 1000)
     }
@@ -105,7 +107,7 @@ class Game {
     if (this.isGameOver === true) {
       return
     }
-    // Check if the game is over
+    // Check if the game is over and open game over modal
     if (
       this.playerGameboard.areAllShipsSunk() === true ||
       this.computerGameboard.areAllShipsSunk() === true
@@ -114,7 +116,7 @@ class Game {
       this.isGameOver = true
     }
 
-    // Check if it's computers turn
+    // Check if it's computers turn and make attack if it is
     this.handleComputerTurn()
   }
 }
