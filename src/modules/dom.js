@@ -117,9 +117,26 @@ class GameboardDOMHandler {
         }
       }
 
-      if (adjacentCoords.length === 0) {
-        hoveredCell.classList.add('invalid-placement-cell')
-      } else {
+      // Check for placement validity acording to adjacent cells
+      const validPlacement = () => {
+        let isValid = false
+
+        // Check if adjacent cells are not already placed
+        const notAlreadyPlaced = !adjacentCoords.some((coord) => {
+          const cell = placingGameboard.querySelector(`[data-value=${coord}]`)
+          return cell && cell.classList.contains('placed-cell')
+        })
+
+        // Check if adjacent coords exist and if adjacent cells are not alrady placed
+        if (adjacentCoords.length !== 0 && notAlreadyPlaced === true) {
+          isValid = true
+        }
+
+        return isValid
+      }
+
+      // Check for placement validity and update the dom accordingly
+      if (validPlacement()) {
         hoveredCell.classList.add('valid-placement-cell')
         adjacentCoords.forEach((coord) => {
           adjacentCell = placingGameboard.querySelector(`[data-value=${coord}]`)
@@ -127,6 +144,8 @@ class GameboardDOMHandler {
             adjacentCell.classList.add('adjacent-cell')
           }
         })
+      } else {
+        hoveredCell.classList.add('invalid-placement-cell')
       }
     }
 
