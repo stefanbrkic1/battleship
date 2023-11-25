@@ -132,8 +132,11 @@ function handleStartGame() {
   // Start game when player is ready
   readyBtn.addEventListener('click', () => {
     const gameboardsContainer = document.getElementById('gameboardsContainer')
+    const nameInput = document.getElementById('nameInput')
     const playerCoords = gameboardDOM.playerPlacingCoords
-    if (playerCoords.length === 5) {
+
+    // Check if player placed all the ships and provided name
+    if (playerCoords.length === 5 && nameInput.value !== '') {
       startForm.classList.add('display-none')
       gameboardsContainer.classList.remove('display-none')
       newGame.startGame()
