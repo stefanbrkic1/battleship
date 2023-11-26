@@ -6,6 +6,7 @@ const {
   handleCellStyling,
   openGameOverModal,
   handleGameRestart,
+  handleStartGame,
 } = require('./modules/dom')
 const Gameboard = require('./modules/gameboard')
 const Player = require('./modules/player')
@@ -121,33 +122,8 @@ class Game {
   }
 }
 
-const newGame = new Game()
-
-function handleStartGame() {
-  const startForm = document.getElementById('startForm')
-  const readyBtn = document.getElementById('readyBtn')
-
-  // Prevent form from submiting to server
-  startForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-  })
-  // Start game when player is ready
-  readyBtn.addEventListener('click', () => {
-    const gameboardsContainer = document.getElementById('gameboardsContainer')
-    const nameInput = document.getElementById('nameInput')
-    const playerCoords = gameboardDOM.playerPlacingCoords
-
-    // Check if player placed all the ships and provided name
-    if (playerCoords.length === 5 && nameInput.value !== '') {
-      startForm.classList.add('display-none')
-      gameboardsContainer.classList.remove('display-none')
-      newGame.startGame()
-    }
-  })
-}
-
 window.addEventListener('load', () => {
-  handleStartGame()
+  handleStartGame(new Game(), gameboardDOM)
   handleRotationButton()
   gameboardDOM.handlePlayerPlacement()
   handleGameRestart()

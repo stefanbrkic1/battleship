@@ -8,13 +8,16 @@
   <body>
     <div class="container">
       <form action="" id="startForm">
-        <input type="text" id="nameInput" placeholder="Your Name" required />
+        <input
+          type="text"
+          id="nameInput"
+          placeholder="Your Name"
+          required
+          autocomplete="off"
+        />
         <div class="placing-displayer">
-          <div id="shipTextDisplayer">SHIP: CARRIER</div>
-          <div class="axis-container">
-            <div>ROTATION:</div>
-            <div id="rotateBtn">HORIZONTAL</div>
-          </div>
+          <div id="shipTextDisplayer">SHIP ( CARRIER )</div>
+          <div id="rotateBtn" data-value="HORIZONTAL"></div>
         </div>
         <div class="gameboard" id="placingGameboard">
           <div class="cell placing-cell" data-value="A1"></div>
@@ -121,8 +124,21 @@
         <button type="submit" id="readyBtn">READY</button>
       </form>
       <div class="gameboards-container display-none" id="gameboardsContainer">
-        <div class="gameboard" id="playerGameboard"></div>
-        <div class="gameboard" id="computerGameboard"></div>
+        <div class="gameboard-placeholder">
+          <div class="fleet fleet-player">YOUR FLEET</div>
+          <div class="gameboard" id="playerGameboard"></div>
+        </div>
+
+        <div class="vs-container">
+          <div id="playerNameDisplayer" class="name-displayer">Stefan</div>
+          <div class="vs">VS</div>
+          <div class="name-displayer">Computer</div>
+        </div>
+
+        <div class="gameboard-placeholder">
+          <div class="fleet fleet-computer">COMPUTER'S FLEET</div>
+          <div class="gameboard" id="computerGameboard"></div>
+        </div>
       </div>
       <dialog data-modal class="modal-container">
         <div class="modal-flex">
@@ -130,6 +146,7 @@
           <button type="button" id="playAgainBtn">PLAY AGAIN</button>
         </div>
       </dialog>
+
       <div class="overlay"></div>
     </div>
   </body>

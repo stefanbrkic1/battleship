@@ -19,8 +19,7 @@
 }
 
 :root {
-  --primary-color: #2d69eb;
-  --secondary-color: rgb(241, 229, 54);
+  --primary-color: rgb(255, 217, 0);
 
   --text-color: #fbfbfb;
   --text-secondary-color: #bfbfd4;
@@ -76,9 +75,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  gap: 130px;
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+.gameboard-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .display-none {
@@ -105,12 +112,19 @@ body {
 }
 
 .missed-attack-cell {
-  background-color: #2d69eb !important;
+  background: url(../assets/img/x.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25px;
   cursor: not-allowed;
 }
 
 .hit-attack-cell {
-  background-color: red !important;
+  background: url(../assets/img/explosion.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: gray;
   cursor: not-allowed;
 }
 
@@ -138,36 +152,50 @@ body {
 
 #readyBtn {
   width: 100%;
-  padding: 10px;
+  padding: 15px;
   margin-top: 20px;
-  font-size: 20rem;
+  font-size: 25rem;
   appearance: none;
   border: none;
   outline: none;
   cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  font-family: 'HelveticaBold', sans-serif;
+  border-radius: 6px;
 }
 
 #shipTextDisplayer {
   padding: 20px 0px;
+  font-family: 'HelveticaBold', sans-serif;
 }
 
 #rotateBtn {
-  width: 100px;
+  width: 30px;
   height: 30px;
+  background: url(../assets/img/rotate.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2d69eb;
   cursor: pointer;
   border-radius: 5px;
 }
 
+.placing-displayer {
+  background-color: rgb(54, 54, 54);
+  padding: 0px 10px;
+  margin: 10px 0px;
+}
+
 .valid-placement-cell {
-  background-color: yellow;
+  background-color: var(--primary-color);
 }
 
 .adjacent-cell {
-  background-color: yellow;
+  background-color: var(--primary-color);
 }
 
 .invalid-placement-cell {
@@ -236,19 +264,66 @@ body {
   cursor: not-allowed !important;
 }
 
+#nameInput {
+  background-color: #fafafa;
+  font-size: 17rem;
+  font-family: 'HelveticaBold', sans-serif;
+}
+
+.fleet {
+  padding: 11px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'HelveticaBold', sans-serif;
+}
+
+.fleet-player {
+  background-color: var(--primary-color);
+  color: #050505;
+}
+
+.fleet-computer {
+  background-color: #363636;
+}
+
+.vs-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.vs {
+  font-family: 'HelveticaBold', sans-serif;
+  font-size: 80rem;
+}
+
+#playerNameDisplayer {
+  margin-bottom: 7px;
+}
+
 /*Media Queries*/
 
 /* Media query for phones */
 @media only screen and (max-width: 767px) {
   .container {
-    padding: 5px;
+    padding: 20px;
   }
   .gameboards-container {
     flex-direction: column;
   }
-  .gameboard-placeholder {
+  .gameboard {
     width: 300px;
     height: 300px;
+  }
+  .vs-container {
+    display: none;
   }
 }
 
@@ -256,9 +331,5 @@ body {
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .container {
     padding: 5px;
-  }
-  .gameboard-placeholder {
-    width: 300px;
-    height: 300px;
   }
 }

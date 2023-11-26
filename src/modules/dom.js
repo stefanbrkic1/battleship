@@ -89,7 +89,7 @@ class GameboardDOMHandler {
       // Define ship lengths
       ships = [5, 4, 3, 3, 2]
       adjacentCoords = []
-      rotation = document.getElementById('rotateBtn').textContent
+      rotation = document.getElementById('rotateBtn').dataset.value
 
       if (rotation === 'VERTICAL') {
         // Vertical ship
@@ -222,7 +222,7 @@ class GameboardDOMHandler {
         shipName = 'NO SHIPS LEFT'
     }
 
-    this.shipTextDisplayer.textContent = `SHIP: ${shipName}`
+    this.shipTextDisplayer.textContent = `SHIP ( ${shipName} )`
   }
 }
 
@@ -238,10 +238,10 @@ function handleCellStyling(cell) {
 function handleRotationButton() {
   const rotateBtn = document.getElementById('rotateBtn')
   rotateBtn.addEventListener('click', () => {
-    if (rotateBtn.textContent === 'HORIZONTAL') {
-      rotateBtn.textContent = 'VERTICAL'
+    if (rotateBtn.dataset.value === 'HORIZONTAL') {
+      rotateBtn.dataset.value = 'VERTICAL'
     } else {
-      rotateBtn.textContent = 'HORIZONTAL'
+      rotateBtn.dataset.value = 'HORIZONTAL'
     }
   })
 }
@@ -264,6 +264,31 @@ function handleGameRestart() {
   })
 }
 
+function handleStartGame(newGame, gameboardDOM) {
+  const startForm = document.getElementById('startForm')
+  const readyBtn = document.getElementById('readyBtn')
+
+  // Prevent form from submiting to server
+  startForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+  })
+  // Start game when player is ready
+  readyBtn.addEventListener('click', () => {
+    const gameboardsContainer = document.getElementById('gameboardsContainer')
+    const playerNameDisplayer = document.getElementById('playerNameDisplayer')
+    const nameInput = document.getElementById('nameInput')
+    const playerCoords = gameboardDOM.playerPlacingCoords
+
+    // Check if player placed all the ships and provided name
+    if (playerCoords.length === 5 && nameInput.value !== '') {
+      startForm.classList.add('display-none')
+      gameboardsContainer.classList.remove('display-none')
+      playerNameDisplayer.textContent = nameInput.value
+      newGame.startGame()
+    }
+  })
+}
+
 module.exports = {
   GameboardDOMHandler,
   handleRotationButton,
@@ -271,4 +296,5 @@ module.exports = {
   openGameOverModal,
   closeGameOverModal,
   handleGameRestart,
+  handleStartGame,
 }
