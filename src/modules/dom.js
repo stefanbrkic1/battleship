@@ -84,11 +84,8 @@ class GameboardDOMHandler {
       hoveredCell = e.target
       hoveredCoords = hoveredCell.dataset.value
       coordX = [...hoveredCoords].at(0)
-      // Handle coordY based on number of digits
-      coordY =
-        hoveredCoords.length === 3
-          ? `${[...hoveredCoords].at(1)}${[...hoveredCoords].at(2)}`
-          : [...hoveredCoords].at(1)
+      coordY = Number([...hoveredCoords].slice(1).join(''))
+
       // Define ship lengths
       ships = [5, 4, 3, 3, 2]
       adjacentCoords = []
@@ -172,10 +169,7 @@ class GameboardDOMHandler {
 
         // Extract Coordinates
         coordX = [...clickedCoords].at(0)
-        coordY =
-          hoveredCoords.length === 3
-            ? `${[...clickedCoords].at(1)}${[...clickedCoords].at(2)}`
-            : [...clickedCoords].at(1)
+        coordY = Number([...clickedCoords].slice(1).join(''))
 
         // Add placing coordinate to playerPlacingCoords
         if (currentShip <= 5) {
