@@ -267,11 +267,20 @@ function handleGameRestart() {
 function handleStartGame(newGame, gameboardDOM) {
   const startForm = document.getElementById('startForm')
   const readyBtn = document.getElementById('readyBtn')
+  const placingGameboard = document.getElementById('placingGameboard')
+  const shipTextDisplayer = document.getElementById('shipTextDisplayer')
 
   // Prevent form from submiting to server
   startForm.addEventListener('submit', (e) => {
     e.preventDefault()
   })
+
+  placingGameboard.addEventListener('click', () => {
+    if (shipTextDisplayer.textContent === 'SHIP ( NO SHIPS LEFT )') {
+      readyBtn.classList.remove('disabled-btn')
+    }
+  })
+
   // Start game when player is ready
   readyBtn.addEventListener('click', () => {
     const gameboardsContainer = document.getElementById('gameboardsContainer')
@@ -283,7 +292,7 @@ function handleStartGame(newGame, gameboardDOM) {
     if (playerCoords.length === 5 && nameInput.value !== '') {
       startForm.classList.add('display-none')
       gameboardsContainer.classList.remove('display-none')
-      playerNameDisplayer.textContent = nameInput.value
+      playerNameDisplayer.textContent = nameInput.value.toUpperCase()
       newGame.startGame()
     }
   })
