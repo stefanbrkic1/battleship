@@ -19,8 +19,8 @@
 }
 
 :root {
-  --primary-color: rgb(255, 217, 0);
-
+  --primary-color: #f8c600; /* Orange */
+  --secondary-color: rgb(19, 103, 212);
   --text-color: #fbfbfb;
   --text-secondary-color: #bfbfd4;
   --text-tertiary-color: #7f7f98;
@@ -62,7 +62,10 @@ body {
 .container {
   width: 100%;
   height: 100%;
-  background-color: var(--background-color);
+  background: url(../assets/img/background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,15 +127,8 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: gray;
+  background-color: rgb(158, 158, 158);
   cursor: not-allowed;
-}
-
-.placing-displayer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .axis-container {
@@ -148,6 +144,8 @@ body {
   padding: 10px;
   border: none;
   width: 100%;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle Box Shadow */
 }
 
 #readyBtn {
@@ -160,14 +158,18 @@ body {
   outline: none;
   cursor: pointer;
   background-color: var(--primary-color);
-  color: var(--background-color);
+  color: var(--text-color);
   font-family: 'HelveticaBold', sans-serif;
   border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle Box Shadow */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #shipTextDisplayer {
   padding: 20px 0px;
   font-family: 'HelveticaBold', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle Box Shadow */
 }
 
 #rotateBtn {
@@ -185,34 +187,44 @@ body {
 }
 
 .placing-displayer {
-  background-color: rgb(54, 54, 54);
-  padding: 0px 10px;
+  background-color: var(--secondary-color);
+  padding: 0px 15px;
   margin: 10px 0px;
+  border-radius: 6px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .valid-placement-cell {
-  background-color: var(--primary-color);
+  background-color: rgba(179, 179, 179, 0.74);
 }
 
 .adjacent-cell {
-  background-color: var(--primary-color);
+  background-color: rgba(179, 179, 179, 0.74);
+}
+
+.placing-cell {
+  cursor: pointer;
 }
 
 .invalid-placement-cell {
-  background-color: red;
+  background: url(../assets/img/x-red.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  cursor: not-allowed;
 }
 
 .placed-cell {
-  background-color: grey !important;
-  pointer-events: none;
+  background-color: rgb(158, 158, 158) !important;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
 }
 
 .player-placed-cell {
-  background-color: grey;
-}
-
-#placingGameboard {
-  cursor: pointer;
+  background-color: rgb(158, 158, 158);
 }
 
 #playerGameboard {
@@ -277,15 +289,16 @@ body {
   justify-content: center;
   align-items: center;
   font-family: 'HelveticaBold', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .fleet-player {
   background-color: var(--primary-color);
-  color: #050505;
+  color: var(--text-color);
 }
 
 .fleet-computer {
-  background-color: #363636;
+  background-color: var(--secondary-color);
 }
 
 .vs-container {
@@ -297,6 +310,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 6px;
 }
 
 .vs {
@@ -305,7 +319,25 @@ body {
 }
 
 #playerNameDisplayer {
-  margin-bottom: 7px;
+  margin-bottom: 10px;
+  background-color: var(--primary-color);
+}
+
+#computerNameDisplayer {
+  background-color: var(--secondary-color);
+}
+
+.name-displayer {
+  font-family: 'HelveticaBold', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+.disabled-btn {
+  opacity: 70% !important;
+  cursor: not-allowed !important;
 }
 
 /*Media Queries*/
@@ -317,10 +349,29 @@ body {
   }
   .gameboards-container {
     flex-direction: column;
+    gap: 15px;
   }
   .gameboard {
     width: 300px;
     height: 300px;
+  }
+  .vs-container {
+    display: none;
+  }
+}
+
+/* Media query for small phones */
+@media only screen and (max-width: 376px) {
+  .container {
+    padding: 20px;
+  }
+  .gameboards-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .gameboard {
+    width: 270px;
+    height: 270px;
   }
   .vs-container {
     display: none;
