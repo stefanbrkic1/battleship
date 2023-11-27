@@ -3,7 +3,7 @@ import './styles/battleship.css'
 const {
   GameboardDOMHandler,
   handleRotationButton,
-  handleCellStyling,
+  handleCellEffects,
   openGameOverModal,
   handleGameRestart,
   handleStartGame,
@@ -75,7 +75,7 @@ class Game {
     // Check if it's players turn and perform attacks
     if (this.currentPlayerTurn === this.player.name) {
       // Update Cell Styling
-      handleCellStyling(clickedCell)
+      handleCellEffects(clickedCell)
 
       // Perform attack
       this.player.attack(this.computerGameboard, clickedCell.dataset.value)
@@ -99,7 +99,7 @@ class Game {
         this.switchPlayerTurn()
         this.computerGameboardDOM.classList.remove('disable-attack')
         this.gameLoop() // Continue the game loop after the computer's attack
-      }, 1000)
+      }, 2500)
     }
   }
 

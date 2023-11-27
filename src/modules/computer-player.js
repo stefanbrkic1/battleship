@@ -1,4 +1,4 @@
-const { handleCellStyling } = require('./dom')
+const { handleCellEffects } = require('./dom')
 
 class ComputerPlayer {
   constructor() {
@@ -22,7 +22,7 @@ class ComputerPlayer {
     const playerCellDOM = enemyGameboardDOM.querySelector(
       `[data-value=${attackCoordinates}]`,
     )
-    handleCellStyling(playerCellDOM)
+    handleCellEffects(playerCellDOM)
   }
 
   static generateRandomCoords() {

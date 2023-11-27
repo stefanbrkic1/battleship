@@ -1,3 +1,6 @@
+const explosion = require('../assets/audio/explosion.mp3').default
+const water = require('../assets/audio/water-splash.mp3').default
+
 const modal = document.querySelector('[data-modal]')
 const modalOverlay = document.querySelector('.overlay')
 
@@ -226,11 +229,17 @@ class GameboardDOMHandler {
   }
 }
 
-function handleCellStyling(cell) {
-  // Update Cell Styling
+function handleCellEffects(cell) {
+  const explosionAudio = new Audio(explosion)
+  const missAudio = new Audio(water)
+
+  console.log('Explosion Audio:', explosionAudio.src)
+  // Update Cell Styling and Play audio
   if (cell.classList.contains('empty-coordinate')) {
+    missAudio.play()
     cell.classList.add('missed-attack-cell')
   } else if (cell.classList.contains('occupied-coordinate')) {
+    explosionAudio.play()
     cell.classList.add('hit-attack-cell')
   }
 }
@@ -301,7 +310,7 @@ function handleStartGame(newGame, gameboardDOM) {
 module.exports = {
   GameboardDOMHandler,
   handleRotationButton,
-  handleCellStyling,
+  handleCellEffects,
   openGameOverModal,
   closeGameOverModal,
   handleGameRestart,
