@@ -38,12 +38,9 @@ class Game {
         coord.rotation,
       )
     })
-    // Predetermined Computer Ships Coordinates
-    this.computerGameboard.placeShip(5, 'A', '1', 'HORIZONTAL')
-    this.computerGameboard.placeShip(4, 'J', '1', 'VERTICAL')
-    this.computerGameboard.placeShip(3, 'A', '10', 'HORIZONTAL')
-    this.computerGameboard.placeShip(3, 'F', '9', 'HORIZONTAL')
-    this.computerGameboard.placeShip(2, 'H', '4', 'VERTICAL')
+
+    // Place computer ships randomly
+    gameboardDOM.placeComputerShips(this.computerGameboard)
 
     // Render placed ships to DOM Gameboard
     gameboardDOM.renderGameboard(this.playerGameboard, this.playerGameboardDOM)

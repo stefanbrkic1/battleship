@@ -56,6 +56,56 @@ class GameboardDOMHandler {
     }
   }
 
+  placeComputerShips(computerGameboard) {
+    const randomNum = Math.floor(Math.random() * 4)
+    console.log(randomNum)
+
+    if (randomNum === 0) {
+      // Predetermined Computer Ships Coordinates Combination
+      computerGameboard.placeShip(5, 'A', '1', 'HORIZONTAL')
+      computerGameboard.placeShip(4, 'J', '1', 'VERTICAL')
+      computerGameboard.placeShip(3, 'A', '10', 'HORIZONTAL')
+      computerGameboard.placeShip(3, 'F', '9', 'HORIZONTAL')
+      computerGameboard.placeShip(2, 'H', '4', 'VERTICAL')
+    }
+
+    if (randomNum === 1) {
+      // Predetermined Computer Ships Coordinates Combination
+      computerGameboard.placeShip(5, 'B', '3', 'HORIZONTAL')
+      computerGameboard.placeShip(4, 'E', '6', 'HORIZONTAL')
+      computerGameboard.placeShip(3, 'B', '7', 'VERTICAL')
+      computerGameboard.placeShip(3, 'I', '1', 'VERTICAL')
+      computerGameboard.placeShip(2, 'I', '9', 'VERTICAL')
+    }
+
+    if (randomNum === 2) {
+      // Predetermined Computer Ships Coordinates Combination
+      computerGameboard.placeShip(5, 'B', '2', 'VERTICAL')
+      computerGameboard.placeShip(4, 'C', '9', 'HORIZONTAL')
+      computerGameboard.placeShip(3, 'G', '6', 'HORIZONTAL')
+      computerGameboard.placeShip(3, 'E', '1', 'VERTICAL')
+      computerGameboard.placeShip(2, 'I', '2', 'VERTICAL')
+    }
+
+    if (randomNum === 3) {
+      // Predetermined Computer Ships Coordinates Combination
+      computerGameboard.placeShip(5, 'B', '9', 'HORIZONTAL')
+      computerGameboard.placeShip(4, 'I', '6', 'VERTICAL')
+      computerGameboard.placeShip(3, 'B', '4', 'VERTICAL')
+      computerGameboard.placeShip(3, 'F', '2', 'VERTICAL')
+      computerGameboard.placeShip(2, 'I', '2', 'VERTICAL')
+    }
+
+    if (randomNum === 4) {
+      // Predetermined Computer Ships Coordinates Combination
+      computerGameboard.placeShip(5, 'I', '2', 'VERTICAL')
+      computerGameboard.placeShip(4, 'B', '6', 'VERTICAL')
+      computerGameboard.placeShip(3, 'D', '2', 'HORIZONTAL')
+      computerGameboard.placeShip(3, 'F', '9', 'HORIZONTAL')
+      computerGameboard.placeShip(2, 'F', '4', 'VERTICAL')
+    }
+  }
+
   /* eslint-disable no-use-before-define */
   handlePlayerPlacement() {
     const placingGameboard = document.getElementById('placingGameboard')
