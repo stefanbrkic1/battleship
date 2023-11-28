@@ -283,7 +283,6 @@ function handleCellEffects(cell) {
   const explosionAudio = new Audio(explosion)
   const missAudio = new Audio(water)
 
-  console.log('Explosion Audio:', explosionAudio.src)
   // Update Cell Styling and Play audio
   if (cell.classList.contains('empty-coordinate')) {
     missAudio.play()
@@ -305,7 +304,17 @@ function handleRotationButton() {
   })
 }
 
-function openGameOverModal() {
+function openGameOverModal(computerGameboard) {
+  const winnerDisplayer = document.getElementById('winnerDisplayer')
+
+  // Set winner text
+  if (computerGameboard.areAllShipsSunk() === true) {
+    winnerDisplayer.textContent = `( YOU WON )`
+  } else {
+    winnerDisplayer.textContent = `( COMPUTER WON )`
+  }
+
+  // Open game over modal
   modalOverlay.classList.add('modal-open')
   modal.showModal()
 }

@@ -110,7 +110,7 @@ class Game {
       this.playerGameboard.areAllShipsSunk() === true ||
       this.computerGameboard.areAllShipsSunk() === true
     ) {
-      openGameOverModal()
+      openGameOverModal(this.computerGameboard)
       this.isGameOver = true
     }
 

@@ -240,9 +240,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
-  height: 100px;
+  padding: 30px 60px;
   position: relative;
+  border: none;
+  border-radius: 6px;
 }
 
 .modal-flex {
@@ -268,8 +269,32 @@ body {
   display: block !important;
 }
 
+.game-over-text {
+  font-size: 30rem;
+  font-family: 'HelveticaBold', sans-serif;
+  color: rgb(58, 58, 58);
+}
+
+#winnerDisplayer {
+  font-size: 20rem;
+  margin-bottom: 10px;
+  font-family: 'HelveticaBold', sans-serif;
+  color: rgb(95, 95, 95);
+}
+
 #playAgainBtn {
   cursor: pointer;
+  padding: 15px;
+  font-size: 22rem;
+  appearance: none;
+  border: none;
+  outline: none;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-family: 'HelveticaBold', sans-serif;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle Box Shadow */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .disable-attack {
