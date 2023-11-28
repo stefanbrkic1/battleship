@@ -32,7 +32,7 @@ THE CLASSIC NAVAL COMBAT GAME
 
 <br>
 
-## Battleship Game | The Classic Naval Combat Game
+## Battleship | The Classic Naval Combat Game
 
 **Welcome to Battleship: A Classic Naval Strategy Game in Javascript!**
 
