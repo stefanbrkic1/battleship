@@ -74,12 +74,14 @@ module.exports = {
       filename: 'index.html',
       template: './src/pages/index.ejs',
       chunks: ['index'],
+      favicon: './src/assets/img/battleship.png',
     }),
     new HtmlWebpackPlugin({
       title: 'Battleship | Gameboard',
       filename: 'battleship.html',
       template: './src/pages/battleship.ejs',
       chunks: ['battleship'],
+      favicon: './src/assets/img/battleship.png',
     }),
   ],
   resolve: {
