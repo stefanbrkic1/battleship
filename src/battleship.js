@@ -1,4 +1,4 @@
-import './styles/battleship.css'
+require('./styles/battleship.css')
 
 const {
   GameboardDOMHandler,
@@ -16,7 +16,7 @@ const gameboardDOM = new GameboardDOMHandler()
 
 class Game {
   constructor() {
-    this.player = new Player('Stefan')
+    this.player = new Player('Player')
     this.computerPlayer = new ComputerPlayer()
     this.currentPlayerTurn = this.player.name
     this.playerGameboard = new Gameboard()
@@ -125,3 +125,5 @@ window.addEventListener('load', () => {
   gameboardDOM.handlePlayerPlacement()
   handleGameRestart()
 })
+
+module.exports = Game
