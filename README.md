@@ -6,7 +6,7 @@
 <div align="center">
 <img src="./src/assets/img/LOGO.png" alt="logo" width="330">
 <br>
-"Navigate, Strategize, Conquer."
+THE CLASSIC NAVAL COMBAT GAME
 <br>
 <br>
   <p>
@@ -20,17 +20,17 @@
 </div>
 
 <br>
+<!-- ABOUT THE PROJECT -->
 
 ## Overview
 
 This Battleship game is a classic naval strategy game implemented in Javascript. Test your strategic skills as you engage in epic naval battles against the computer.
 
-<!-- ABOUT THE PROJECT -->
+<br>
 
 ## Preview
 
 ![Preview](<./src/assets/img/GitHub(MainPage).jpg>)
-![Preview](<./src/assets/img/GitHub(MainPage)2.jpg>)
 ![Preview](<./src/assets/img/GitHub(MainPage)3.jpg>)
 ![Preview](<./src/assets/img/GitHub(PHONES).jpg>)
 
