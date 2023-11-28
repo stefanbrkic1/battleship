@@ -34,7 +34,11 @@ THE CLASSIC NAVAL COMBAT GAME
 
 ## Battleship Game | The Classic Naval Combat Game
 
-This Battleship game is a classic naval strategy game implemented in Javascript. Test your strategic skills as you engage in epic naval battles against the computer.The goal of Battleship is to sink all of your opponent's fleet before they sink yours.
+**Welcome to Battleship: A Classic Naval Strategy Game in Javascript!**
+
+Embark on a thrilling voyage as you dive into the world of Battleship, a classic naval strategy game implemented in Javascript. Whether you're a seasoned tactician or a newcomer to the high seas, this game offers an exciting challenge that will put your strategic skills to the test.
+
+This Battleship game is a classic naval strategy game. Test your strategic skills as you engage in epic naval battles against the computer.The goal of Battleship is to sink all of your opponent's fleet before they sink yours.
 
 <br>
 
