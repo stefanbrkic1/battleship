@@ -408,4 +408,8 @@ body {
   .container {
     padding: 5px;
   }
+  .gameboards-container {
+    flex-direction: column;
+    gap: 15px;
+  }
 }

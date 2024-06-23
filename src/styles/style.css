@@ -238,4 +238,15 @@ a {
 
 /* Media query for tablets */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .battleship-text {
+    font-size: 200rem;
+  }
+  .landing-text {
+    letter-spacing: 9px;
+    padding-bottom: 3px;
+  }
+  .play-btn {
+    padding: 20px 90px;
+    font-size: 55px;
+  }
 }
